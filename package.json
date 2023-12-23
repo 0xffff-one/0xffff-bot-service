@@ -11,6 +11,7 @@
   "author": "Eugene Zheng <hsxfjames@gmail.com> (https://github.com/hsxfjames)",
   "license": "MIT",
   "dependencies": {
+    "@koa/router": "^12.0.1",
     "camelcase-keys": "^9.1.2",
     "koa": "^2.14.2",
     "koa-body": "^6.0.1"
