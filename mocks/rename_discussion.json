@@ -1,0 +1,18 @@
+{
+    "username": "0xFFFF-test",
+    "avatar_url": null,
+    "text": null,
+    "attachments": [
+        {
+            "fallback": "New title: test 2 title - test rename - admin",
+            "color": "fed330",
+            "title": "Renamed discussion `test 2 title`",
+            "title_link": "http://localhost:8080/d/2",
+            "text": "New title: test 2 title - test rename",
+            "footer": "0xFFFF-test",
+            "author_name": "admin",
+            "author_link": "http://localhost:8080/u/admin",
+            "author_icon": null
+        }
+    ]
+}

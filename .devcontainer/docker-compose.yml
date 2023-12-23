@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  bot:
+    image: mcr.microsoft.com/devcontainers/javascript-node:1-20-bookworm
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    networks:
+      - default
+      - local_flarum_0xffff
+networks:
+  local_flarum_0xffff:
+    name: flarum-0x_devcontainer_default
+    external: true

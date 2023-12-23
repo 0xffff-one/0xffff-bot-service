@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "0xffff-bot-service",
+  "version": "1.0.0",
+  "description": "Flarum 0xffff bot service",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eugene Zheng <hsxfjames@gmail.com> (https://github.com/hsxfjames)",
+  "license": "MIT",
+  "dependencies": {
+    "camelcase-keys": "^9.1.2",
+    "koa": "^2.14.2",
+    "koa-body": "^6.0.1"
+  }
+}

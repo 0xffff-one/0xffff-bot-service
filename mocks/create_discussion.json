@@ -1,0 +1,18 @@
+{
+    "username": "0xFFFF-test",
+    "avatar_url": null,
+    "text": null,
+    "attachments": [
+        {
+            "fallback": "test 2 content - admin",
+            "color": "fed330",
+            "title": "Started discussion `test 2 title`",
+            "title_link": "http://localhost:8080/d/2",
+            "text": "test 2 content",
+            "footer": "0xFFFF-test",
+            "author_name": "admin",
+            "author_link": "http://localhost:8080/u/admin",
+            "author_icon": null
+        }
+    ]
+}

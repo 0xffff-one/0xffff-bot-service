@@ -1,0 +1,18 @@
+{
+    "username": "0xFFFF-test",
+    "avatar_url": null,
+    "text": null,
+    "attachments": [
+        {
+            "fallback": "test reply\n\ntest edit - admin",
+            "color": "26de81",
+            "title": "Edited post in `test 2 title`",
+            "title_link": "http://localhost:8080/d/2/2",
+            "text": "test reply\n\ntest edit",
+            "footer": "0xFFFF-test",
+            "author_name": "admin",
+            "author_link": "http://localhost:8080/u/admin",
+            "author_icon": null
+        }
+    ]
+}
