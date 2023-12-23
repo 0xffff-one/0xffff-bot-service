@@ -13,13 +13,9 @@ export function buildText(body) {
   return `@${authorName} ${title}\n${text}\n${titleLink}`;
 }
 
-export function buildCommand(text) {
-  // switch to loggedIn user
-  const loginCommands = `su ${X11User} -l -c`.split(' ');
+function buildXdotoolCommand(text) {
   // activate the window focus by clicking inputbox
   const locationCommands = [
-    // here we manual set the x11 display connection
-    `export DISPLAY=${X11DisplayPort}`,
     `xdotool mousemove ${InputboxPosX} ${InputboxPosY}`,
     'xdotool click 1',
   ];
@@ -41,14 +37,32 @@ export function buildCommand(text) {
   const actionCommands = [
     'xdotool key Return',
   ];
+  return [
+    ...locationCommands,
+    ...typeCommands,
+    ...actionCommands,
+  ];
+}
+
+export function buildQemuCommand(text) {
+  // switch to loggedIn user
+  const loginCommands = `su ${X11User} -l -c`.split(' ');
+  const envCommands = [
+    // here we manual set the x11 display connection
+    `export DISPLAY=${X11DisplayPort}`,
+  ];
+
   // combine the command list, all commands except the login commands should be in one line and
   // be executed serially in the switched subshell.
   return [
     ...loginCommands,
     [
-      ...locationCommands,
-      ...typeCommands,
-      ...actionCommands,
+      ...envCommands,
+      ...buildXdotoolCommand(text),
     ].join(' && '),
   ];
+}
+
+export function buildLocalCommand(text) {
+  return buildXdotoolCommand(text).join(' && ');
 }
