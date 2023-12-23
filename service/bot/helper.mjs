@@ -19,24 +19,20 @@ function buildXdotoolCommand(text) {
     `xdotool mousemove ${InputboxPosX} ${InputboxPosY}`,
     'xdotool click 1',
   ];
-  // convert multiline text to a series of `xdotool type` command
-  const typeCommands = [];
-  text.split('\n').forEach((paragraph, index) => {
-    if (index > 0) {
-      // insert a new line
-      typeCommands.push('xdotool key --clearmodifiers Shift+Return');
-    }
-    if (paragraph !== '') {
-      // since the qemu agent cannot receive wide chars, it's a workaround that encode them into
-      // \xAB form and just send the pure ASCII chars, then `printf` will convert them back
-      const encodedParagraph = encodeURI(paragraph).replaceAll('%', '\\x');
-      typeCommands.push(`printf '${encodedParagraph}' | xdotool type --clearmodifiers --file -`);
-    }
-  });
+
+  // set the text to clipboard, then run xdotool c-v it onto the GUI
+  const typeCommands = ['xsel -cb'];
+  // since the qemu agent cannot receive wide chars, it's a workaround that encode them into \xAB
+  // form and just send the pure ASCII chars, then `printf` will convert them back
+  const encodedText = encodeURI(text).replaceAll('%', '\\x');
+  typeCommands.push(`printf '${encodedText}' | xsel -b`);
+  typeCommands.push('xdotool key --clearmodifiers ctrl+v');
+
   // finally action to send the whole text
   const actionCommands = [
-    'xdotool key Return',
+    'xdotool key --clearmodifiers Return',
   ];
+
   return [
     ...locationCommands,
     ...typeCommands,
